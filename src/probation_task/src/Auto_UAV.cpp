@@ -215,7 +215,7 @@ private:
 
         void ComHdgCallback(const std_msgs::msg::Float64::SharedPtr msg)
         {
-            com_hdg.data = static_cast<float>(msg->data);
+            com_hdg.data = msg->data;
         }
 
         // ===== Set Mode =====
