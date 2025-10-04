@@ -134,14 +134,14 @@ private:
                 if(((fabs(error_x.data) > center_threshold && fabs(error_x.data) <= 0.2) 
                     || (fabs(error_y.data) > center_threshold && fabs(error_y.data) <= 0.2)) && in_range == true)
                 {
-                    x_vel.data = 0.1;
+                    x_vel.data = 0.1; //slight movement to align to the center of gate
                 }
 
                 if(red_flare_detected.data == true)
                 {
                     if(red_flare_h.data > 0.5)
                     {
-                        y_vel.data = -0.3;
+                        y_vel.data = -0.3; // if red_flare is detected move right
                     }
                 }
 
@@ -149,7 +149,7 @@ private:
                     && ((com_hdg.data >= 175.0 && com_hdg.data <= 180.0) || (com_hdg.data >= 355.0 && com_hdg.data <= 358.0)))
                 {
                     state_ = UAVState::PASS_THROUGH;
-                    start_time_ = this->now();
+                    start_time_ = this->now(); //start timer
                     RCLCPP_INFO(this->get_logger(), "Aligned → PASS_THROUGH");
                 }
                 break;
@@ -165,7 +165,7 @@ private:
                     {
                         if(red_flare_h.data > 0.60)
                         {
-                            y_vel.data = -0.5;
+                            y_vel.data = -0.5; //if red flare is detected move right
                         }
                     }
                 }
